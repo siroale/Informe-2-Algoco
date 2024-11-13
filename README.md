@@ -1,10 +1,10 @@
-## Informe 2 Algoco (Tarea 2 y 3)
+# Informe 2 Algoco (Tarea 2 y 3)
 
-# Integrantes
+## Integrantes
 
 | Nombre                    | ROL         | Paralelo |
 | ------------------------- | ----------- |----------|
-| Alexis Mellis Orozco      | 202273557-0 | 200      |
+| Alexis Mellis Orozco      | 202273557-0 | 201      |
 
 # 
 
