@@ -8,5 +8,3 @@
 
 # 
 
-Todos los codigos para el desarrollo de este informe fueron
-creados por mi.
