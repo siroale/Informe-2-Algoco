@@ -1,33 +1,52 @@
-import random
+deleteCost = "2"
+insertCost = "1"
+categories = ["insert", "delete", "replace", "transpose"]
 
-def archivoMatriz(nombre, a):
 
-    nombreArchivo = "cost_" + nombre + ".txt"
-    archivo = open(nombreArchivo, "w")
+def fillRow (file, cost):
+    row = ""
+    for i in range(26):
+        row += cost + " " 
     
-    for i in range(0,26):
-        for j in range(0,26):
-            if i == j:
-                archivo.write("0 ")
-            elif a == 1:
-                archivo.write("1 ")
+    file.write(row)
+    return
+
+
+def fillSustChart (file):
+    size = 26
+    for a in range(size):
+        row = ""
+        for b in range(size):
+            if a == b:
+                row += "0 "     
+                continue
+            
+            if abs(a - b) <= (size/2):
+                row += str(abs(a - b)) + " " 
+
             else:
-                archivo.write("2 ")
-        archivo.write("\n")
-    archivo.close()
+                row += str(size - abs(a-b)) + " "
+        
+        row = row[:len(row)] + "\n"
+        file.write(row)
 
     return
 
-def archivoLinea(nombre):
-    nombreArchivo = "cost_" + nombre + ".txt"
-    archivo = open(nombreArchivo, "w")
-    for i in range(0,26):
-        archivo.write("1 ")
-    return
 
 
+for fileType in categories:
+    file = open("cost_" + fileType + ".txt", "w")
+    
+    if fileType == "delete":
+        fillRow(file, deleteCost)
+    
+    elif fileType == "insert":
+        fillRow(file, insertCost)
 
-archivoLinea("insert")
-archivoMatriz("transpose", 1)
-archivoMatriz("replace", 0)
-archivoLinea("delete")
+    elif fileType == "replace":
+        fillSustChart(file)
+    
+    elif fileType == "transpose":
+        fillSustChart(file)
+
+    file.close()
